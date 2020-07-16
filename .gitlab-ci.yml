@@ -36,7 +36,7 @@ deploy:
     - mkdir -p $HOME/.kube && cp $KUBE_CONFIG_FILE "$HOME/.kube/config"
   script:
       - kubectl apply -f k8s/deployment.yml
-      - kubectl rollout status -f k8s/deployment.yml
+#      - kubectl rollout status -f k8s/deployment.yml
       - kubectl set image deployment api-gw-deployment-test api-gw-test=$REGISTRY_HOST/$CI_PROJECT_PATH:api-gw-test --record
       - kubectl set image deployment api-cat-deployment-test api-cat-test=$REGISTRY_HOST/$CI_PROJECT_PATH:api-cat-test --record
       - kubectl set image deployment api-emp-deployment-test api-emp-test=$REGISTRY_HOST/$CI_PROJECT_PATH:api-emp-test --record
