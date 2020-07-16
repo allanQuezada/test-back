@@ -23,7 +23,7 @@ namespace GatewayApi
   
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>  
         WebHost.CreateDefaultBuilder(args)  
-         .UseUrls("http://*:9000")  
+         .UseUrls("http://*:80")  
          .ConfigureAppConfiguration((hostingContext, config) =>  
          {  
              if (hostingContext.HostingEnvironment.EnvironmentName == "Production"){

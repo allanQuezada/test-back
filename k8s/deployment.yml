@@ -5,7 +5,7 @@ metadata:
   labels:
     app: api-gw-test-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api-gw-test-app
@@ -30,7 +30,7 @@ metadata:
   labels:
     app: api-cat-test-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api-cat-test-app
@@ -55,7 +55,7 @@ metadata:
   labels:
     app: api-emp-test-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api-emp-test-app
