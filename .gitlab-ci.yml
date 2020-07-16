@@ -15,4 +15,10 @@ build:
     - cd GatewayApi
     - docker build -t $REGISTRY_HOST/$CI_PROJECT_PATH:$CI_COMMIT_SHA -t $REGISTRY_HOST/$CI_PROJECT_PATH:api-gw-test .
     - docker push $REGISTRY_HOST/$CI_PROJECT_PATH:api-gw-test
+    - cd .. && cd CatalogsApi
+    - docker build -t $REGISTRY_HOST/$CI_PROJECT_PATH:$CI_COMMIT_SHA -t $REGISTRY_HOST/$CI_PROJECT_PATH:api-cat-test .
+    - docker push $REGISTRY_HOST/$CI_PROJECT_PATH:api-cat-test
+    - cd .. && cd EmployeesApi
+    - docker build -t $REGISTRY_HOST/$CI_PROJECT_PATH:$CI_COMMIT_SHA -t $REGISTRY_HOST/$CI_PROJECT_PATH:api-emp-test .
+    - docker push $REGISTRY_HOST/$CI_PROJECT_PATH:api-emp-test
 

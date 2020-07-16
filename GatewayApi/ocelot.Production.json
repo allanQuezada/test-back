@@ -27,7 +27,7 @@
     ],  
     "GlobalConfiguration": {   
       "ServiceDiscoveryProvider": {   
-        "Host": "consul.sd",  
+        "Host": "consul-svc",  
         "Port": 8500,  
         "Type":"PollConsul",  
         "PollingInterval": 100  
