@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gw-deployment-test
+  labels:
+    app: api-gw-test-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-gw-test-app
+  template:
+    metadata:
+      labels:
+        app: api-gw-test-app
+    spec:
+      containers:
+      - name: api-gw-test
+        image: pensotec.com:5005/egdeleon/test-back:api-gw-test
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+      imagePullSecrets:
+       - name: gitlab-docker-registry
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-cat-deployment-test
+  labels:
+    app: api-cat-test-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-cat-test-app
+  template:
+    metadata:
+      labels:
+        app: api-cat-test-app
+    spec:
+      containers:
+      - name: api-cat-test
+        image: pensotec.com:5005/egdeleon/test-back:api-cat-test
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+      imagePullSecrets:
+       - name: gitlab-docker-registry
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-emp-deployment-test
+  labels:
+    app: api-emp-test-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-emp-test-app
+  template:
+    metadata:
+      labels:
+        app: api-emp-test-app
+    spec:
+      containers:
+      - name: api-emp-test
+        image: pensotec.com:5005/egdeleon/test-back:api-emp-test
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+      imagePullSecrets:
+       - name: gitlab-docker-registry
