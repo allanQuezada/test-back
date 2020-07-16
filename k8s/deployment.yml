@@ -68,7 +68,7 @@ spec:
       - name: api-emp-test
         image: pensotec.com:5005/egdeleon/test-back:api-emp-test
         ports:
-        - containerPort: 80
+        - containerPort: 443
         imagePullPolicy: Always
       imagePullSecrets:
        - name: gitlab-docker-registry
