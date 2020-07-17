@@ -53,7 +53,7 @@ namespace EmployeesApi
             .AddEnvironmentVariables()
             .Build();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseConsul(env.EnvironmentName); 
             app.UseRouting();
 
