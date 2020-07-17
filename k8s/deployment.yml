@@ -6,6 +6,7 @@ metadata:
     app: api-gw-test-app
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: api-gw-test-app
@@ -20,8 +21,6 @@ spec:
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
-        - name: ASPNETCORE_URLS
-          value: "http://0.0.0.0:80"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -36,6 +35,7 @@ metadata:
     app: api-cat-test-app
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: api-cat-test-app
@@ -52,8 +52,6 @@ spec:
           value: "Production"
         - name: Consul__Host
           value: "http://consul-svc:8500"
-        - name: ASPNETCORE_URLS
-          value: "http://0.0.0.0:80"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -68,6 +66,7 @@ metadata:
     app: api-emp-test-app
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: api-emp-test-app
@@ -84,8 +83,6 @@ spec:
           value: "Production"
         - name: Consul__Host
           value: "http://consul-svc:8500"
-        - name: ASPNETCORE_URLS
-          value: "http://0.0.0.0:80"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
