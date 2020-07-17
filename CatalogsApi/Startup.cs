@@ -57,11 +57,11 @@ namespace CatalogsApi
             app.UseConsul(env.EnvironmentName); 
             app.UseRouting();
 
-            app.UseCors(builder => 
-            builder.WithOrigins("http://localhost:4200","http://api-test.nilo.gt") 
-            .AllowAnyOrigin() 
-            .AllowAnyHeader() 
-            .AllowAnyMethod()); 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             
             //app.UseAuthorization();
 

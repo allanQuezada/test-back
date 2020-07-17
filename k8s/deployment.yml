@@ -20,6 +20,8 @@ spec:
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
+        - name: ASPNETCORE_URLS
+          value: "http://0.0.0.0:80"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -50,6 +52,8 @@ spec:
           value: "Production"
         - name: Consul__Host
           value: "http://consul-svc:8500"
+        - name: ASPNETCORE_URLS
+          value: "http://0.0.0.0:80"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -80,6 +84,8 @@ spec:
           value: "Production"
         - name: Consul__Host
           value: "http://consul-svc:8500"
+        - name: ASPNETCORE_URLS
+          value: "http://0.0.0.0:80"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
