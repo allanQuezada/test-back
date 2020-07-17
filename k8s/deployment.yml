@@ -17,6 +17,9 @@ spec:
       containers:
       - name: api-gw-test
         image: pensotec.com:5005/egdeleon/test-back:api-gw-test
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -42,6 +45,11 @@ spec:
       containers:
       - name: api-cat-test
         image: pensotec.com:5005/egdeleon/test-back:api-cat-test
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+        - name: Consul__Host
+          value: "http://consul-svc:8500"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -67,6 +75,11 @@ spec:
       containers:
       - name: api-emp-test
         image: pensotec.com:5005/egdeleon/test-back:api-emp-test
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+        - name: Consul__Host
+          value: "http://consul-svc:8500"
         ports:
         - containerPort: 80
         imagePullPolicy: Always
