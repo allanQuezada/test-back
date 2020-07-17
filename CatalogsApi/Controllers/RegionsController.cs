@@ -2,59 +2,56 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using CatalogsApi;
 using CatalogsApi.Models;
 
 namespace CatalogsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentsController : ControllerBase
+    public class RegionsController : ControllerBase
     {
-
         private readonly DemoContext _context;
 
-        public DepartmentsController(DemoContext context)
+        public RegionsController(DemoContext context)
         {
             _context = context;
         }
 
-        // GET: api/Departments
+        // GET: api/Regions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Departments>>> GetDepartments()
+        public async Task<ActionResult<IEnumerable<Regions>>> GetRegions()
         {
-            return await _context.Departments.ToListAsync();
+            return await _context.Regions.ToListAsync();
         }
 
-        // GET: api/Departments/5
+        // GET: api/Regions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Departments>> GetDepartments(int id)
+        public async Task<ActionResult<Regions>> GetRegions(int id)
         {
-            var departments = await _context.Departments.FindAsync(id);
+            var regions = await _context.Regions.FindAsync(id);
 
-            if (departments == null)
+            if (regions == null)
             {
                 return NotFound();
             }
 
-            return departments;
+            return regions;
         }
 
-        // PUT: api/Departments/5
+        // PUT: api/Regions/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDepartments(int id, Departments departments)
+        public async Task<IActionResult> PutRegions(int id, Regions regions)
         {
-            if (id != departments.department_id)
+            if (id != regions.region_id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(departments).State = EntityState.Modified;
+            _context.Entry(regions).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +59,7 @@ namespace CatalogsApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DepartmentsExists(id))
+                if (!RegionsExists(id))
                 {
                     return NotFound();
                 }
@@ -75,37 +72,37 @@ namespace CatalogsApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Departments
+        // POST: api/Regions
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Departments>> PostDepartments(Departments departments)
+        public async Task<ActionResult<Regions>> PostRegions(Regions regions)
         {
-            _context.Departments.Add(departments);
+            _context.Regions.Add(regions);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDepartments", new { id = departments.department_id }, departments);
+            return CreatedAtAction("GetRegions", new { id = regions.region_id }, regions);
         }
 
-        // DELETE: api/Departments/5
+        // DELETE: api/Regions/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Departments>> DeleteDepartments(int id)
+        public async Task<ActionResult<Regions>> DeleteRegions(int id)
         {
-            var departments = await _context.Departments.FindAsync(id);
-            if (departments == null)
+            var regions = await _context.Regions.FindAsync(id);
+            if (regions == null)
             {
                 return NotFound();
             }
 
-            _context.Departments.Remove(departments);
+            _context.Regions.Remove(regions);
             await _context.SaveChangesAsync();
 
-            return departments;
+            return regions;
         }
 
-        private bool DepartmentsExists(int id)
+        private bool RegionsExists(int id)
         {
-            return _context.Departments.Any(e => e.department_id == id);
+            return _context.Regions.Any(e => e.region_id == id);
         }
     }
 }

@@ -12,49 +12,48 @@ namespace CatalogsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentsController : ControllerBase
+    public class JobsController : ControllerBase
     {
-
         private readonly DemoContext _context;
 
-        public DepartmentsController(DemoContext context)
+        public JobsController(DemoContext context)
         {
             _context = context;
         }
 
-        // GET: api/Departments
+        // GET: api/Jobs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Departments>>> GetDepartments()
+        public async Task<ActionResult<IEnumerable<Jobs>>> GetJobs()
         {
-            return await _context.Departments.ToListAsync();
+            return await _context.Jobs.ToListAsync();
         }
 
-        // GET: api/Departments/5
+        // GET: api/Jobs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Departments>> GetDepartments(int id)
+        public async Task<ActionResult<Jobs>> GetJobs(int id)
         {
-            var departments = await _context.Departments.FindAsync(id);
+            var jobs = await _context.Jobs.FindAsync(id);
 
-            if (departments == null)
+            if (jobs == null)
             {
                 return NotFound();
             }
 
-            return departments;
+            return jobs;
         }
 
-        // PUT: api/Departments/5
+        // PUT: api/Jobs/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDepartments(int id, Departments departments)
+        public async Task<IActionResult> PutJobs(int id, Jobs jobs)
         {
-            if (id != departments.department_id)
+            if (id != jobs.job_id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(departments).State = EntityState.Modified;
+            _context.Entry(jobs).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +61,7 @@ namespace CatalogsApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DepartmentsExists(id))
+                if (!JobsExists(id))
                 {
                     return NotFound();
                 }
@@ -75,37 +74,37 @@ namespace CatalogsApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Departments
+        // POST: api/Jobs
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Departments>> PostDepartments(Departments departments)
+        public async Task<ActionResult<Jobs>> PostJobs(Jobs jobs)
         {
-            _context.Departments.Add(departments);
+            _context.Jobs.Add(jobs);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDepartments", new { id = departments.department_id }, departments);
+            return CreatedAtAction("GetJobs", new { id = jobs.job_id }, jobs);
         }
 
-        // DELETE: api/Departments/5
+        // DELETE: api/Jobs/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Departments>> DeleteDepartments(int id)
+        public async Task<ActionResult<Jobs>> DeleteJobs(int id)
         {
-            var departments = await _context.Departments.FindAsync(id);
-            if (departments == null)
+            var jobs = await _context.Jobs.FindAsync(id);
+            if (jobs == null)
             {
                 return NotFound();
             }
 
-            _context.Departments.Remove(departments);
+            _context.Jobs.Remove(jobs);
             await _context.SaveChangesAsync();
 
-            return departments;
+            return jobs;
         }
 
-        private bool DepartmentsExists(int id)
+        private bool JobsExists(int id)
         {
-            return _context.Departments.Any(e => e.department_id == id);
+            return _context.Jobs.Any(e => e.job_id == id);
         }
     }
 }

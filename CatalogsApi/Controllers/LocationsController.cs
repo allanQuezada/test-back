@@ -12,49 +12,48 @@ namespace CatalogsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentsController : ControllerBase
+    public class LocationsController : ControllerBase
     {
-
         private readonly DemoContext _context;
 
-        public DepartmentsController(DemoContext context)
+        public LocationsController(DemoContext context)
         {
             _context = context;
         }
 
-        // GET: api/Departments
+        // GET: api/Locations
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Departments>>> GetDepartments()
+        public async Task<ActionResult<IEnumerable<Locations>>> GetLocations()
         {
-            return await _context.Departments.ToListAsync();
+            return await _context.Locations.ToListAsync();
         }
 
-        // GET: api/Departments/5
+        // GET: api/Locations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Departments>> GetDepartments(int id)
+        public async Task<ActionResult<Locations>> GetLocations(int id)
         {
-            var departments = await _context.Departments.FindAsync(id);
+            var locations = await _context.Locations.FindAsync(id);
 
-            if (departments == null)
+            if (locations == null)
             {
                 return NotFound();
             }
 
-            return departments;
+            return locations;
         }
 
-        // PUT: api/Departments/5
+        // PUT: api/Locations/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDepartments(int id, Departments departments)
+        public async Task<IActionResult> PutLocations(int id, Locations locations)
         {
-            if (id != departments.department_id)
+            if (id != locations.location_id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(departments).State = EntityState.Modified;
+            _context.Entry(locations).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +61,7 @@ namespace CatalogsApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DepartmentsExists(id))
+                if (!LocationsExists(id))
                 {
                     return NotFound();
                 }
@@ -75,37 +74,37 @@ namespace CatalogsApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Departments
+        // POST: api/Locations
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Departments>> PostDepartments(Departments departments)
+        public async Task<ActionResult<Locations>> PostLocations(Locations locations)
         {
-            _context.Departments.Add(departments);
+            _context.Locations.Add(locations);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDepartments", new { id = departments.department_id }, departments);
+            return CreatedAtAction("GetLocations", new { id = locations.location_id }, locations);
         }
 
-        // DELETE: api/Departments/5
+        // DELETE: api/Locations/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Departments>> DeleteDepartments(int id)
+        public async Task<ActionResult<Locations>> DeleteLocations(int id)
         {
-            var departments = await _context.Departments.FindAsync(id);
-            if (departments == null)
+            var locations = await _context.Locations.FindAsync(id);
+            if (locations == null)
             {
                 return NotFound();
             }
 
-            _context.Departments.Remove(departments);
+            _context.Locations.Remove(locations);
             await _context.SaveChangesAsync();
 
-            return departments;
+            return locations;
         }
 
-        private bool DepartmentsExists(int id)
+        private bool LocationsExists(int id)
         {
-            return _context.Departments.Any(e => e.department_id == id);
+            return _context.Locations.Any(e => e.location_id == id);
         }
     }
 }
