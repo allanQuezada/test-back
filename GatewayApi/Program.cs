@@ -11,6 +11,8 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Consul;
 using Ocelot.Provider.Consul;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GatewayApi
 {
@@ -41,11 +43,20 @@ namespace GatewayApi
          })  
         .ConfigureServices(services =>  
         {  
+            services.AddCors();
+
             services.AddOcelot()
             .AddConsul(); 
         })  
         .Configure(app =>  
         {  
+            app.UseCors(builder =>
+			{
+				builder.WithOrigins("*");
+				builder.AllowAnyHeader();
+				builder.AllowAnyMethod();
+			});
+            
             app.UseOcelot().Wait();  
         });  
     }
