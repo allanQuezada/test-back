@@ -58,7 +58,7 @@ namespace CatalogsApi
             app.UseRouting();
 
             app.UseCors(builder => 
-            builder.WithOrigins("http://localhost:4200") 
+            builder.WithOrigins("http://localhost:4200","http://api-test.nilo.gt") 
             .AllowAnyOrigin() 
             .AllowAnyHeader() 
             .AllowAnyMethod()); 
