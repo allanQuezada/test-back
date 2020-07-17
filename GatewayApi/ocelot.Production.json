@@ -9,7 +9,7 @@
           "Type": "RoundRobin"  
         },  
         "UpstreamPathTemplate": "/catalogs/{url}",   
-        "UpstreamHttpMethod": [ "GET", "POST" , "PUT" ],   
+        "UpstreamHttpMethod": [ "Get", "Options", "Post", "Delete", "Put", "Patch" ],   
         "ReRoutesCaseSensitive": false   
       },
       {  
@@ -21,7 +21,7 @@
           "Type": "RoundRobin"  
         },  
         "UpstreamPathTemplate": "/employees/{url}",   
-        "UpstreamHttpMethod": [ "GET", "POST" , "PUT" ],   
+        "UpstreamHttpMethod": [ "Get", "Options", "Post", "Delete", "Put", "Patch" ],   
         "ReRoutesCaseSensitive": false   
       }  
     ],  
