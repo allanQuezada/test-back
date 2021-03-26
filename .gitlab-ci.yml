@@ -1,6 +1,7 @@
 variables:
   REGISTRY_HOST: pensotec.com:5005
 
+
 build:
   stage: build
   image: docker:18-git
